@@ -1,0 +1,12 @@
+<!-- wp:template-part {"slug":"header","theme":"limoux","tagName":"header"} /-->
+<!-- wp:cover {"overlayColor":"primary","isUserOverlayColor":true,"minHeight":420,"className":"limoux-hero"} -->
+<div class="wp-block-cover limoux-hero" style="min-height:420px"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","fontSize":"x-large"} --><h2 class="wp-block-heading has-text-align-center has-x-large-font-size">Luxury Limo Service Built for Reliability</h2><!-- /wp:heading --><!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">Airport transfers, executive travel, events, and curated tours.</p><!-- /wp:paragraph --><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} --><div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"accent","textColor":"ink"} --><div class="wp-block-button"><a class="wp-block-button__link has-ink-color has-accent-background-color has-text-color has-background wp-element-button">Book a Ride</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div></div>
+<!-- /wp:cover -->
+<!-- wp:pattern {"slug":"limoux/stats-bar"} /-->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:heading --><h2 class="wp-block-heading">Featured Fleet</h2><!-- /wp:heading --><!-- wp:query {"query":{"postType":"fleet_vehicle","perPage":6}} -->
+<div class="wp-block-query"><!-- wp:post-template --><!-- wp:group {"className":"limoux-card"} --><div class="wp-block-group limoux-card"><!-- wp:post-featured-image {"isLink":true} /--><!-- wp:post-title {"isLink":true} /--><!-- wp:post-excerpt /--></div><!-- /wp:group --><!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group -->
+<!-- wp:pattern {"slug":"limoux/current-offers"} /-->
+<!-- wp:template-part {"slug":"footer","theme":"limoux","tagName":"footer"} /-->

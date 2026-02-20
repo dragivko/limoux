@@ -1,0 +1,12 @@
+.limoux-ai-panel {
+    padding: 1rem;
+    border: 1px solid #ccd0d4;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.limoux-ai-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
