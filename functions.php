@@ -18,6 +18,9 @@ require_once LIMOUX_DIR . '/inc/class-schema-manager.php';
 require_once LIMOUX_DIR . '/inc/class-ai-engine.php';
 require_once LIMOUX_DIR . '/inc/class-ai-settings-page.php';
 require_once LIMOUX_DIR . '/inc/class-ai-admin.php';
+require_once LIMOUX_DIR . '/inc/class-wizard.php';
+require_once LIMOUX_DIR . '/inc/class-theme-settings.php';
+require_once LIMOUX_DIR . '/inc/class-image-optimizer.php';
 require_once LIMOUX_DIR . '/inc/integrations/class-webhook-dispatcher.php';
 require_once LIMOUX_DIR . '/inc/integrations/class-rest-api.php';
 require_once LIMOUX_DIR . '/inc/integrations/class-flowmattic.php';
@@ -43,7 +46,7 @@ function limoux_enqueue_assets() {
 
 add_action( 'admin_enqueue_scripts', 'limoux_enqueue_admin_assets' );
 
-function limoux_enqueue_admin_assets() {
+function limoux_enqueue_admin_assets( $hook ) {
     wp_enqueue_style( 'limoux-ai-admin', LIMOUX_URI . '/assets/css/ai-admin.css', array(), LIMOUX_VERSION );
     wp_enqueue_script( 'limoux-ai-admin', LIMOUX_URI . '/assets/js/ai-admin.js', array( 'jquery' ), LIMOUX_VERSION, true );
 
@@ -55,6 +58,21 @@ function limoux_enqueue_admin_assets() {
             'ajaxUrl' => admin_url( 'admin-ajax.php' ),
         )
     );
+
+    if ( false !== strpos( (string) $hook, 'limoux-wizard' ) ) {
+        wp_enqueue_style( 'limoux-wizard', LIMOUX_URI . '/assets/css/wizard.css', array(), LIMOUX_VERSION );
+        wp_enqueue_script( 'limoux-wizard', LIMOUX_URI . '/assets/js/wizard.js', array( 'wp-element', 'wp-api-fetch' ), LIMOUX_VERSION, true );
+
+        wp_localize_script(
+            'limoux-wizard',
+            'limouxWizard',
+            array(
+                'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                'nonce'   => wp_create_nonce( 'limoux_wizard_nonce' ),
+                'state'   => get_option( 'limoux_wizard_state', array() ),
+            )
+        );
+    }
 }
 
 add_action( 'admin_init', 'limoux_validate_scf_dependency' );
@@ -79,6 +97,9 @@ function limoux_validate_scf_dependency() {
 new Limoux_Schema_Manager();
 new Limoux_AI_Settings_Page();
 new Limoux_AI_Admin();
+new Limoux_Wizard();
+new Limoux_Theme_Settings();
+new Limoux_Image_Optimizer();
 new Limoux_Webhook_Dispatcher();
 new Limoux_REST_API();
 new Limoux_Flowmattic();

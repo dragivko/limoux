@@ -11,16 +11,18 @@ WordPress Full Site Editing theme for luxury transportation businesses.
 == Features ==
 - 10 transportation-specific custom post types.
 - SCF field groups for each CPT.
-- Multi-provider AI generation architecture (Claude/OpenAI/Gemini).
 - Schema manager for LocalBusiness, Service, Vehicle, Review, Event, FAQPage, Offer.
+- Multi-provider AI architecture (Claude/OpenAI/Gemini).
 - Automation layer with webhooks, REST API, and Flowmattic hooks.
-- FSE templates, parts, and starter patterns.
+- React-based onboarding wizard (admin SPA) with resumable state.
+- Theme settings panel with General, Design, AI, Integrations, and Image Optimization tabs.
+- Built-in image optimization pipeline with configurable quality and dimensions.
 
 == Required Plugin ==
 - Secure Custom Fields (free)
 
 == Setup ==
-1. Upload and activate theme.
+1. Activate theme.
 2. Install Secure Custom Fields.
-3. Configure AI and Integrations in Settings > AI Settings.
-4. Add content in each CPT and edit templates in Site Editor.
+3. Run Setup Wizard from Limoux menu.
+4. Configure settings and publish content.
